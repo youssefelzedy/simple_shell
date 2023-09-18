@@ -17,7 +17,7 @@ unsigned int numCount)
 	{
 		stat = getCdMod(strRead_cp, argv[0], numCount);
 		error = errno;
-		free_2d(strRead_cp);
+		/*free_2d(strRead_cp);*/
 	}
 	else
 	{

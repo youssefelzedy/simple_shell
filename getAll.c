@@ -8,11 +8,11 @@ char **get_argv(char *strRead)
 	tmp = _strdup(strRead);
 	if (tmp == NULL)
 		return (NULL);
-	tmp_token = strtok(tmp, " \t\n");
+	tmp_token = strtokMod(tmp, " \t\n");
 	while (tmp_token != NULL)
 	{
 		size++;
-		tmp_token = strtok(NULL, " \t\n");
+		tmp_token = strtokMod(NULL, " \t\n");
 	}
 
 	free(tmp), size++;
@@ -21,7 +21,7 @@ char **get_argv(char *strRead)
 		return (NULL);
 	for (i = 0; i < size - 1; i++)
 	{
-		token = strtok((i ? NULL : strRead), " \t\n");
+		token = strtokMod((i ? NULL : strRead), " \t\n");
 		argv[i] = _strdup(token);
 		if (argv[i] == NULL)
 		{
@@ -44,10 +44,10 @@ char **get_dirs(char *path)
 	tmp = _strdup(path);
 	if (tmp == NULL)
 		exit(EXIT_FAILURE);
-	tmp_token = strtok(tmp, ":");
+	tmp_token = strtokMod(tmp, ":");
 	while (tmp_token != NULL)
 	{
-		tmp_token = strtok(NULL, ":");
+		tmp_token = strtokMod(NULL, ":");
 		size++;
 	}
 
@@ -57,7 +57,7 @@ char **get_dirs(char *path)
 		exit(EXIT_FAILURE);
 	for (i = 0; i < size - 1; i++)
 	{
-		token = strtok((i ? NULL : path), ":");
+		token = strtokMod((i ? NULL : path), ":");
 		dirs[i] = _strdup(token);
 		if (dirs[i] == NULL)
 		{

@@ -4,6 +4,7 @@
  *_putchar - ...
  *@c: ...
  */
+
 void _putchar(char c)
 {
 	write(STDERR_FILENO, &c, 1);
@@ -13,6 +14,7 @@ void _putchar(char c)
  *_putstr - ...
  *@s: ...
  */
+
 void _putstr(char *s)
 {
 	int i;
@@ -20,13 +22,13 @@ void _putstr(char *s)
 	for (i = 0; s[i]; i++)
 		write(STDERR_FILENO, &s[i], 1);
 }
-
 /**
  *_strlen - ...
  *@s: ...
  *
  *Return: length
  */
+
 int _strlen(char *s)
 {
 	int i;
@@ -42,6 +44,7 @@ int _strlen(char *s)
  *
  *Return: 0 on success, 1 on failure
  */
+
 int _putnum(unsigned int num)
 {
 	unsigned int num_cp = num;
@@ -94,6 +97,7 @@ int _putnum(unsigned int num)
  *
  *Return: 127 or -1
  */
+
 int print_stderr(char *argv, unsigned int count, char *av, char *prompt)
 {
 	_putstr(argv);

@@ -6,7 +6,8 @@ char *readIn()
 	size_t num = 0;
 	ssize_t numCharsRead;
 
-	numCharsRead = getline(&strRead, &num, stdin);
+	numCharsRead = getLineMod(&strRead, &num, STDIN_FILENO);
+	/*numCharsRead = getline(&strRead, &num, stdin);*/
 	if (numCharsRead == -1)
 	{
 		free(strRead);
@@ -34,9 +35,9 @@ int exeFile(char *cmd, char **av, char *argv, int numCount)
 {
 	char **path_dir = NULL;
 	char *path_found = NULL, *prompt, *path = _getenv("PATH"); /*handling PATH */
-	int executable = checkExE(cmd), isPATH = 0, err = 0;
+	int execute = checkExE(cmd), isPATH = 0, err = 0;
 
-	if (executable == 1)
+	if (execute == 1)
 	{
 		if (createChild(cmd, av) == -1)
 			return (-1);
@@ -55,9 +56,9 @@ int exeFile(char *cmd, char **av, char *argv, int numCount)
 		}
 	}
 
-	if (isPATH == 0 && executable <= 0)
+	if (isPATH == 0 && execute <= 0)
 	{
-		prompt = (executable == 0 ? "permission denied\n" : "not found\n");
+		prompt = (execute == 0 ? "permission denied\n" : "not found\n");
 		err = print_stderr(argv, numCount, av[0], prompt);
 	}
 
@@ -72,13 +73,13 @@ int exeFile(char *cmd, char **av, char *argv, int numCount)
 
 int main(notUsed int argc, char *argv[])
 {
-	char *strRead = NULL, **strRead_cp;
-	unsigned int numCount = 0;
+	char *strRead = NULL, **strRead_cp, *wt = "x_x : ", **simiColon;
+	unsigned int numCount = 0, i;
 
 	while (++numCount)
 	{
 		if (isatty(0))
-		printf("x_x : ");
+		write(STDOUT_FILENO, wt, 6);
 		strRead = readIn();
 		/*Check if exsit Imput or not */
 		if (strRead == NULL)
@@ -90,14 +91,25 @@ int main(notUsed int argc, char *argv[])
 			continue;
 		}
 		/* To get all arg from stdInput */
-		strRead_cp = get_argv(strRead);
+		simiColon = getSemiColon(strRead);
 		free(strRead);
-		/* if return NULL */
-		if (strRead_cp == NULL)
+		if (simiColon == NULL)
 			exit(1);
-		/* chose the Order to run */
-		choseOrder(strRead_cp, argv, numCount);
-		free_2d(strRead_cp);
+		for (i = 0; simiColon[i] != NULL; i++)
+		{
+			strRead_cp = get_argv(simiColon[i]);
+
+			/* if return NULL */
+			if (strRead_cp == NULL)
+			{
+				free_2d(simiColon);
+				exit(1);
+			}
+			/* chose the Order to run */
+			choseOrder(strRead_cp, argv, numCount);
+			free_2d(strRead_cp);			
+		}
+		free_2d(simiColon);
 	}
 
 	return (0);

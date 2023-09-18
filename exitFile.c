@@ -1,10 +1,10 @@
 #include "shell.h"
 
-int builtin_exit(char **av, char *argv, int err, int count)
+int modify_exit(char **av, char *argv, int err, int count)
 {
 	if (av[1])
 	{
-		if (not_a_number(av[1]))
+		if (_nan(av[1]))
 		{
 			errno = err = 2;
 			print_stderr(argv, count, av[0], "Illegal number: ");
@@ -12,14 +12,14 @@ int builtin_exit(char **av, char *argv, int err, int count)
 			return (2);
 		}
 
-		err = str_to_int(av[1]);
+		err = _stoi(av[1]);
 	}
 
 	free_2d(av);
 	exit(err);
 }
 
-int not_a_number(char *s)
+int _nan(char *s)
 {
 	int i;
 
@@ -29,7 +29,7 @@ int not_a_number(char *s)
 	return (0);
 }
 
-int str_to_int(char *s)
+int _stoi(char *s)
 {
 	int i, zero = 1, n = 0;
 

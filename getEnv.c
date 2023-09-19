@@ -1,20 +1,14 @@
 #include "shell.h"
 
-int getEnv(void)
+void getEnv(void)
 {
-	int index;
-	char nl = '\n';
+	unsigned int index;
 
-	if (!__environ)
-		return (-1);
-
-	for (index = 0; __environ[index]; index++)
+	for (index = 0; __environ[index] != NULL; index++)
 	{
-		write(STDOUT_FILENO, __environ[index], _strlen(__environ[index]));
-		_putchar(nl);
+		_putstr(__environ[index]);
+		_putchar('\n');
 	}
-
-	return (0);
 }
 
 

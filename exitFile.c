@@ -2,6 +2,10 @@
 
 int modify_exit(char **av, char *argv, int err, int count)
 {
+	if (count == 0)
+	{
+		exit(0);
+	}		
 	if (av[1])
 	{
 		if (_nan(av[1]))

@@ -37,16 +37,33 @@ int createChild(char *cmd, char **av)
 	else if (child_pid == 0)
 	{
 		if (execve(cmd, av, __environ) == -1)
+		{
+			errno = 2;
 			perror(av[0]);
+			return (2);
+		}
+		else
+		{
+			errno = 0;
+			return (0);	
+		}
 	}
 	else if (child_pid > 0)
 	{
 		wait(&status);
 		if (WIFEXITED(status))
+		{
 			errno = WEXITSTATUS(status);
+			if (WEXITSTATUS(status) == 0)
+				return (0);
+			else if (WEXITSTATUS(status) == 2)
+				return (2);
+			else if (WEXITSTATUS(status) == 127)
+				return (127);
+		}
 	}
 
-	return (0);
+	return (127);
 }
 
 char *_strdup(char *str)

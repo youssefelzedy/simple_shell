@@ -25,13 +25,13 @@ void __cd_success(char *cwd)
 
 int getCdMod(char **strRead_cp, char *argv, unsigned int numCount)
 {
-	char *dir = NULL, *cwd = getcwd(NULL,0);
+	char *dir = NULL, *cwd = getcwd(NULL, 0);
 	int ret = -1;/*returned 0 sucss or -1 error*/
 
 	if (strRead_cp[1] != NULL)
 	{
 		if (_strcmp(strRead_cp[1], "-") == 0)
-		{	
+		{
 			dir = _getenv("OLDPWD");
 			ret = chdir(dir);
 
@@ -43,7 +43,7 @@ int getCdMod(char **strRead_cp, char *argv, unsigned int numCount)
 		}
 		else
 				ret = chdir(strRead_cp[1]);
-			
+
 	}
 	else
 		ret = chdir(_getenv("HOME"));
@@ -51,11 +51,16 @@ int getCdMod(char **strRead_cp, char *argv, unsigned int numCount)
 	if (ret != -1)
 		__cd_success(cwd);
 	else
+	{
 		__cd_error(argv, numCount, strRead_cp[1]);
-	
+		errno = -1;
+		return (errno);
+	}
+		
 	if (dir)
-		free(dir);	
+		free(dir);
 	if (cwd)
 		free(cwd);
+	errno = 0;
 	return (0);
 }

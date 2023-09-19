@@ -75,14 +75,14 @@ int main(notUsed int argc, char *argv[])
 {
 	char *strRead = NULL, **strRead_cp, *wt = "x_x : ", **simiColon;
 	unsigned int numCount = 0, i;
+	int stat = 0;
 
 	while (++numCount)
 	{
 		if (isatty(0))
 		write(STDOUT_FILENO, wt, 6);
 		strRead = readIn();
-		/*Check if exsit Imput or not */
-		if (strRead == NULL)
+		if (strRead == NULL) /*Exsit Imput or not */
 			exit(0);
 		/*Check if the Imput is empty or not */
 		if (checkEmpty(strRead))
@@ -97,20 +97,22 @@ int main(notUsed int argc, char *argv[])
 			exit(1);
 		for (i = 0; simiColon[i] != NULL; i++)
 		{
+			/*printf("simiColon[i] = %s\n", simiColon[i]);*/
 			strRead_cp = get_argv(simiColon[i]);
-
-			/* if return NULL */
-			if (strRead_cp == NULL)
+			if (strRead_cp == NULL) /* if return NULL */
+				freeExit(simiColon, 1);
+			if (strRead_cp[0] == NULL)
 			{
-				free_2d(simiColon);
-				exit(1);
+				stat = 0;
+				continue;
 			}
 			/* chose the Order to run */
-			choseOrder(strRead_cp, argv, numCount);
-			free_2d(strRead_cp);			
+			stat = choseOrder(strRead_cp, argv, numCount);
+			/*printf("stat = %d\n", stat);*/
+			free_2d(strRead_cp);
 		}
 		free_2d(simiColon);
 	}
-
-	return (0);
+	/*printf("statttt = %d\n", stat);*/
+	return (stat);
 }

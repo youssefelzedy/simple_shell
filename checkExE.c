@@ -29,7 +29,6 @@ int createChild(char *cmd, char **av)
 	int status;
 
 	child_pid = fork();
-	printf("child %d \n", child_pid);
 	if (child_pid == -1)
 	{
 		perror("Error");
@@ -37,17 +36,14 @@ int createChild(char *cmd, char **av)
 	}
 	else if (child_pid == 0)
 	{
-		printf("1111111\n");
 		if (execve(cmd, av, __environ) == -1)
 		{
-			printf("22222222222\n");
 			errno = 2;
 			perror(av[0]);
 			return (2);
 		}
 		else
 		{
-			printf("3333333\n");
 			errno = 0;
 			return (0);	
 		}
@@ -55,7 +51,6 @@ int createChild(char *cmd, char **av)
 	else if (child_pid > 0)
 	{
 		wait(&status);
-		printf("wexitstatus %d\n", WEXITSTATUS(status));
 		if (WIFEXITED(status))
 		{
 			errno = WEXITSTATUS(status);

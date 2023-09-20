@@ -37,7 +37,6 @@ int exeFile(char *cmd, char **av, char *argv, int numCount)
 	char *path_found = NULL, *prompt, *path = _getenv("PATH"); /*handling PATH */
 	int execute = checkExE(cmd), isPATH = 0, err = 0;
 
-	printf("ggfgfhgfhfg %d\n", execute);
 	if (execute == 1)
 	{
 		if (createChild(cmd, av) == -1)

@@ -25,10 +25,10 @@ int _strcmp(char *x, char *y);
 
 /*choseOrder Func*/
 int choseOrder(char **strRead_cp, char **argv,
-unsigned int numCount, int er);
+unsigned int numCount, int er, char **simi);
 
 /*exitFile Func*/
-int modify_exit(char **av, char *argv, int err, int count);
+int modify_exit(char **av, char *argv, int err, int count, char **simi);
 int _nan(char *s);
 int _stoi(char *s);
 

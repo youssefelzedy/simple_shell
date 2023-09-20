@@ -90,6 +90,7 @@ int exeFile(char *cmd, char **av, char *argv, int numCount)
 		free(path_found);
 	if (path_dir)
 		free_2d(path_dir);
+
 	return (err);
 }
 
@@ -113,9 +114,11 @@ int main(notUsed int argc, char *argv[])
 		strRead = readIn();
 		if (strRead == NULL) /*Exsit Imput or not */
 			exit(0);
-		/*Check if the Imput is empty or not */
 		if (checkEmpty(strRead))
+		{
+			free(strRead);
 			continue;
+		}
 		/* To get all arg from stdInput */
 		simiColon = getSemiColon(strRead);
 		free(strRead);
@@ -135,7 +138,7 @@ int main(notUsed int argc, char *argv[])
 				stat = 0;
 				continue;
 			}
-			stat = choseOrder(strRead_cp, argv, numCount, err);
+			stat = choseOrder(strRead_cp, argv, numCount, err, simiColon);
 			err = stat;
 			free_2d(strRead_cp);
 		}

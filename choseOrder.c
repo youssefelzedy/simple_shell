@@ -11,16 +11,20 @@
 */
 
 int choseOrder(char **strRead_cp, char **argv,
-unsigned int numCount, int er)
+unsigned int numCount, int er, char **simi)
 {
 	int stat;
 	int error = er;
 
 	if (_strcmp(strRead_cp[0], "exit") == 0)
 	{
-		if (modify_exit(strRead_cp, argv[0], error, numCount) == 2
+		if (modify_exit(strRead_cp, argv[0], error, numCount, simi) == 2
 			&& !isatty(0))
-			exit(2);
+			{
+				free_2d(simi);
+				free_2d(strRead_cp);
+				exit(2);
+			}
 	}
 	else if (_strcmp(strRead_cp[0], "env") == 0)
 	{
@@ -41,7 +45,10 @@ unsigned int numCount, int er)
 		if (stat == -1)
 			freeExit(strRead_cp, 1);
 		else if (stat == 127 && !isatty(0))
+		{
+			free_2d(simi);
 			freeExit(strRead_cp, 127);
+		}
 	}
 	return (error);
 }

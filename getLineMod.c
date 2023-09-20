@@ -11,19 +11,19 @@ void bring_line(char **ptr, size_t *n, char *str, size_t j)
 
 	if (*ptr == NULL)
 	{
-		if  (j > 10240)
+		if  (j > 102400)
 			*n = j;
 
 		else
-			*n = 10240;
+			*n = 102400;
 		*ptr = str;
 	}
 	else if (*n < j)
 	{
-		if (j > 10240)
+		if (j > 102400)
 			*n = j;
 		else
-			*n = 10240;
+			*n = 102400;
 		*ptr = str;
 	}
 	else
@@ -56,8 +56,11 @@ ssize_t getLineMod(char **ptr, size_t *n, FILE *stream)
 	numchar = 0;
 
 	str = malloc(sizeof(char) * 102400);
-	if (str == 0)
+	if (str == NULL)
+	{
+		free(str);
 		return (-1);
+	}
 	while (t != '\n')
 	{
 		i = read(STDIN_FILENO, &t, 1);
@@ -71,8 +74,15 @@ ssize_t getLineMod(char **ptr, size_t *n, FILE *stream)
 			numchar++;
 			break;
 		}
-		if (numchar >= 10240)
-			str = realloc(str, numchar + 1);
+		if (numchar >= 102400)
+		{
+			str = realloc(str, (numchar + 2));
+			if (str == NULL)
+			{
+				free(str);
+				return (-1);
+			}
+		}
 
 		str[numchar] = t;
 		numchar++;

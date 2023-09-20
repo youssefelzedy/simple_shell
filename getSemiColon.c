@@ -34,15 +34,12 @@ char **getSemiColon(char *strRead)
 		argv[i] = _strdup(token);
 		if (argv[i] == NULL)
 		{
-			free(token);
 			for (i--; i >= 0; i--)
 				free(argv[i]);
 			free(argv);
 			return (NULL);
 		}
 	}
-
-	free(token);
 	argv[size - 1] = NULL;
 	return (argv);
 }

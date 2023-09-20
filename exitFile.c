@@ -6,6 +6,7 @@
  * @count:count number of error
  * @av:the path name
  * @err: the error message
+ * @simi: the array of the similar commands.
  * Return: 1 if its true , 0 if false.
  */
 

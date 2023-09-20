@@ -119,27 +119,25 @@ int main(notUsed int argc, char *argv[])
 			free(strRead);
 			continue;
 		}
-		/* To get all arg from stdInput */
 		simiColon = getSemiColon(strRead);
 		free(strRead);
 		if (simiColon == NULL)
-		{
-			free_2d(simiColon);
-			exit(1);
-		}
+			free_2d(simiColon), exit(1);
 		for (i = 0; simiColon[i] != NULL; i++)
 		{
-			/*printf("simiColon[i] = %s\n", simiColon[i]);*/
 			strRead_cp = get_argv(simiColon[i]);
 			if (strRead_cp == NULL) /* if return NULL */
+			{
+				free_2d(strRead_cp);
 				freeExit(simiColon, 1);
+			}
 			if (strRead_cp[0] == NULL)
 			{
 				stat = 0;
+				free_2d(strRead_cp);
 				continue;
 			}
-			stat = choseOrder(strRead_cp, argv, numCount, err, simiColon);
-			err = stat;
+			stat = choseOrder(strRead_cp, argv, numCount, err, simiColon), err = stat;
 			free_2d(strRead_cp);
 		}
 		free_2d(simiColon);

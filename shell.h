@@ -47,6 +47,7 @@ char *_getenv(const char *key);
 int getCdMod(char **strRead_cp, char *argv, unsigned int numCount);
 void __cd_error(char *argv, unsigned int count, char *av);
 void __cd_success(char *cwd);
+int rezise(char *str, ssize_t numchar);
 
 /*strtokMod Func*/
 char *strtokMod(char *str, const char *delim);

@@ -34,6 +34,25 @@ void bring_line(char **ptr, size_t *n, char *str, size_t j)
 }
 
 /**
+ * rezise - reallocates memory for str
+ * @str: str that store the input str
+ * @numchar: size of str
+ *
+ * Return: 0 if success, -1 if fail
+*/
+
+int rezise(char *str, ssize_t numchar)
+{
+	str = realloc(str, (numchar + 2));
+	if (str == NULL)
+	{
+		free(str);
+		return (-1);
+	}
+	return (0);
+}
+
+/**
  * getLineMod - Read inpt from stream
  * @ptr: buffer that stores the input
  * @n: size of lineptr
@@ -52,9 +71,7 @@ ssize_t getLineMod(char **ptr, size_t *n, FILE *stream)
 		fflush(stream);
 	else
 		return (-1);
-
 	numchar = 0;
-
 	str = malloc(sizeof(char) * 102400);
 	if (str == NULL)
 	{
@@ -75,21 +92,12 @@ ssize_t getLineMod(char **ptr, size_t *n, FILE *stream)
 			break;
 		}
 		if (numchar >= 102400)
-		{
-			str = realloc(str, (numchar + 2));
-			if (str == NULL)
-			{
-				free(str);
+			if (rezise(str, numchar) == -1)
 				return (-1);
-			}
-		}
-
-		str[numchar] = t;
-		numchar++;
+		str[numchar] = t, numchar++;
 	}
-	str[numchar] = '\0';
+	str[numchar] = '\0', retval = numchar;
 	bring_line(ptr, n, str, numchar);
-	retval = numchar;
 	if (i != 0)
 		numchar = 0;
 	return (retval);

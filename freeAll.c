@@ -5,6 +5,7 @@
  * @array: the 2ad array .
  * Return: nothing.
  */
+
 void free_2d(char **array)
 {
 	int i = 0;
@@ -13,8 +14,9 @@ void free_2d(char **array)
 		free(array[i]), i++;
 	free(array);
 }
+
 /**
- * free_2d - free memory exit.
+ * freeExit - free memory exit.
  * @str: the 2ad array .
  * @numExit: number of exit
  * Return: nothing.

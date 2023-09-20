@@ -1,5 +1,12 @@
 #include "shell.h"
 
+/**
+ * checkExE - check if the file is executable or not.
+ * @file: the file we want to check.
+ *
+ * Return: 1 if executable, 0 if not  executable, -1 if error.
+*/
+
 int checkExE(char *file)
 {
 	struct stat sb;
@@ -23,6 +30,14 @@ int checkExE(char *file)
 	return (-1);
 }
 
+/**
+ * createChild - create a child process.
+ * @cmd: the command we typed.
+ * @av: It's commonly used to pass command-line arguments.
+ *
+ * Return: 0 if success, 2 if error, 127 if not found.
+*/
+
 int createChild(char *cmd, char **av)
 {
 	pid_t child_pid;
@@ -45,7 +60,7 @@ int createChild(char *cmd, char **av)
 		else
 		{
 			errno = 0;
-			return (0);	
+			return (0);
 		}
 	}
 	else if (child_pid > 0)
@@ -65,6 +80,13 @@ int createChild(char *cmd, char **av)
 
 	return (127);
 }
+
+/**
+ * _strdup - function to duplicate a string.
+ * @str: the string we want to duplicate.
+ *
+ * Return: the string duplicated.
+*/
 
 char *_strdup(char *str)
 {
@@ -87,6 +109,14 @@ char *_strdup(char *str)
 
 	return (copy);
 }
+
+/**
+ * _strcmp - function to compare two strings.
+ * @x: the first string.
+ * @y: the second string.
+ *
+ * Return: 1 if not equal, 0 if equal.
+*/
 
 int _strcmp(char *x, char *y)
 {

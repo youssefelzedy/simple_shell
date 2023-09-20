@@ -1,10 +1,19 @@
 #include "shell.h"
 
+/**
+ * choseOrder - chose the order we want to execute.
+ * @strRead_cp: the command we typed.
+ * @argv: It's commonly used to pass command-line arguments.
+ * @numCount: count the number of errors in the shell command.
+ *
+ * Return: 0 if success, 2 if error, 127 if not found.
+*/
+
 int choseOrder(char **strRead_cp, char **argv,
 unsigned int numCount)
 {
 	int stat;
-	static int error = 0;
+	static int error = 1;
 
 	if (_strcmp(strRead_cp[0], "exit") == 0)
 	{

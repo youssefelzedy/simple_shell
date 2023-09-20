@@ -34,7 +34,7 @@ void bring_line(char **ptr, size_t *n, char *str, size_t j)
 }
 
 /**
- * get_line - Read inpt from stream
+ * getLineMod - Read inpt from stream
  * @ptr: buffer that stores the input
  * @n: size of lineptr
  * @stream: stream to read from

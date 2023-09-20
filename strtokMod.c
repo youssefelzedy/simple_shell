@@ -1,5 +1,13 @@
 #include "shell.h"
 
+/**
+ * check_delim - a function to check if the character is a delimiter.
+ * @c: the character we want to check.
+ * @str: the string we want to check.
+ *
+ * Return: 1 if its true , 0 if false.
+*/
+
 unsigned int check_delim(char c, const char *str)
 {
 	unsigned int i;
@@ -11,6 +19,13 @@ unsigned int check_delim(char c, const char *str)
 	}
 	return (0);
 }
+
+/**
+ * strtokMod - a function to tokenize a string.
+ * @str: the string we want to tokenize.
+ * @delim: the delimiter.
+ * Return: the tokens.
+*/
 
 char *strtokMod(char *str, const char *delim)
 {

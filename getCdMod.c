@@ -62,9 +62,7 @@ int getCdMod(char **strRead_cp, char *argv, unsigned int numCount)
 				err = errno = -1;
 				return (err);
 			}
-
 			ret = chdir(dir);
-
 			if (!ret)
 			{
 				write(STDOUT_FILENO, dir, _strlen(dir));
@@ -84,18 +82,14 @@ int getCdMod(char **strRead_cp, char *argv, unsigned int numCount)
 			err = errno = -1;
 			return (err);
 		}
-
 		ret = chdir(dir);
 	}
-
 	if (ret != -1)
 		__cd_success(cwd);
 	else
 	{
-		__cd_error(argv, numCount, strRead_cp[1]);
-		err = errno = -1;
+		__cd_error(argv, numCount, strRead_cp[1]), err = errno = -1;
 	}
-
 	if (dir)
 		free(dir);
 	if (cwd)

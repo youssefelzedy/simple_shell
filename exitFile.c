@@ -14,7 +14,7 @@ int modify_exit(char **av, char *argv, int err, int count)
 	if (count == 0)
 	{
 		exit(0);
-	}		
+	}
 	if (av[1])
 	{
 		if (_nan(av[1]))
@@ -32,7 +32,7 @@ int modify_exit(char **av, char *argv, int err, int count)
 	exit(err);
 }
 /**
- * _stoi - function to check if the array are NAN.
+ * _nan - function to check if the array are NAN.
  * @s: the string we want ( array of chars).
  * Return: 1 if its true , 0 if false.
  */

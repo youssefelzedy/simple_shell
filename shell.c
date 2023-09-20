@@ -45,7 +45,7 @@ int checkEmpty(char *strRead)
 /**
  * exeFile - a function to execute the command we typed.
  * @cmd: the command we typed.
- * @av: It's commonly used to pass command-line arguments to the executed command.
+ * @av: It's commonly used to pass command-line arguments to the executed.
  * @argv: cointans the file name.
  * @numCount: count the number of errors in the shell command.
  * Return: -1 if there is an error, executed  if not error.
@@ -122,7 +122,7 @@ int main(notUsed int argc, char *argv[])
 		if (simiColon == NULL)
 		{
 			free_2d(simiColon);
-			exit(1);		
+			exit(1);
 		}
 		for (i = 0; simiColon[i] != NULL; i++)
 		{
@@ -137,11 +137,9 @@ int main(notUsed int argc, char *argv[])
 			}
 			/* chose the Order to run */
 			stat = choseOrder(strRead_cp, argv, numCount);
-			/*printf("stat = %d\n", stat);*/
 			free_2d(strRead_cp);
 		}
 		free_2d(simiColon);
 	}
-	/*printf("statttt = %d\n", stat);*/
 	return (stat);
 }

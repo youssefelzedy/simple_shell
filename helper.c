@@ -24,6 +24,7 @@ void _putstr(char *s)
 	for (i = 0; s[i]; i++)
 		write(STDERR_FILENO, &s[i], 1);
 }
+
 /**
  *_strlen - a function to count the array of char length
  *@s: array of characters (string)
@@ -89,7 +90,7 @@ int _putnum(unsigned int num)
 }
 
 /**
- *print_stderr -  function for printing error messages to the standard error (stderr).
+ *print_stderr -  function for printing error messages.
  *@argv: the name of the command or executable.
  *@count: error count.
  *@av: coints the file name

@@ -10,10 +10,10 @@
 */
 
 int choseOrder(char **strRead_cp, char **argv,
-unsigned int numCount)
+unsigned int numCount, int er)
 {
 	int stat;
-	static int error = 1;
+	int error = er;
 
 	if (_strcmp(strRead_cp[0], "exit") == 0)
 	{

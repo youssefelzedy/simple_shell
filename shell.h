@@ -25,7 +25,7 @@ int _strcmp(char *x, char *y);
 
 /*choseOrder Func*/
 int choseOrder(char **strRead_cp, char **argv,
-unsigned int numCount);
+unsigned int numCount, int er);
 
 /*exitFile Func*/
 int modify_exit(char **av, char *argv, int err, int count);

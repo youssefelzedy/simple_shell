@@ -104,7 +104,7 @@ int main(notUsed int argc, char *argv[])
 {
 	char *strRead = NULL, **strRead_cp, *wt = "x_x : ", **simiColon;
 	unsigned int numCount = 0, i;
-	int stat = 0;
+	int stat = 0, err = 0;
 
 	while (++numCount)
 	{
@@ -136,7 +136,8 @@ int main(notUsed int argc, char *argv[])
 				continue;
 			}
 			/* chose the Order to run */
-			stat = choseOrder(strRead_cp, argv, numCount);
+			stat = choseOrder(strRead_cp, argv, numCount, err);
+			err = stat;
 			free_2d(strRead_cp);
 		}
 		free_2d(simiColon);

@@ -116,15 +116,15 @@ int main(notUsed int argc, char *argv[])
 			exit(0);
 		/*Check if the Imput is empty or not */
 		if (checkEmpty(strRead))
-		{
-			free(strRead);
 			continue;
-		}
 		/* To get all arg from stdInput */
 		simiColon = getSemiColon(strRead);
 		free(strRead);
 		if (simiColon == NULL)
-			exit(1);
+		{
+			free_2d(simiColon);
+			exit(1);		
+		}
 		for (i = 0; simiColon[i] != NULL; i++)
 		{
 			/*printf("simiColon[i] = %s\n", simiColon[i]);*/

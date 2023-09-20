@@ -51,7 +51,6 @@ int checkEmpty(char *strRead)
  * Return: -1 if there is an error, executed  if not error.
  */
 
-
 int exeFile(char *cmd, char **av, char *argv, int numCount)
 {
 	char **path_dir = NULL;

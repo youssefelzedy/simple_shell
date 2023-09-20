@@ -25,7 +25,7 @@ char **getSemiColon(char *strRead)
 		tmp_token = strtokMod(NULL, ";&");
 	}
 	free(tmp), size++;
-	argv = (char **) malloc(sizeof(char *) * size);
+	argv = (char **)malloc(sizeof(char *) * size);
 	if (argv == NULL)
 		return (NULL);
 	for (i = 0; i < size - 1; i++)

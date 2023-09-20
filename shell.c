@@ -41,7 +41,6 @@ int exeFile(char *cmd, char **av, char *argv, int numCount)
 	{
 		if (createChild(cmd, av) == -1)
 		{
-			printf("ggfgfhgfhfg\n");
 			return (-1);
 		}
 	}

@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+ * getSemiColon - a function to check if the input is empty or not.
+ * @strRead: the input string we read.
+ * Return: NULL if not success, array if success.
+ */
+
 char **getSemiColon(char *strRead)
 {
 	char **argv = NULL, *token, *tmp, *tmp_token;

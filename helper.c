@@ -1,8 +1,9 @@
 #include "shell.h"
 
 /**
- *_putchar - ...
- *@c: ...
+ *_putchar - a function to put a character
+ *@c: character to put.
+ *Return : nothin;
  */
 
 void _putchar(char c)
@@ -11,8 +12,9 @@ void _putchar(char c)
 }
 
 /**
- *_putstr - ...
- *@s: ...
+ *_putstr - a function to put a string
+ *@s: array of characters (string)
+ * Return: Nothing.
  */
 
 void _putstr(char *s)
@@ -23,9 +25,8 @@ void _putstr(char *s)
 		write(STDERR_FILENO, &s[i], 1);
 }
 /**
- *_strlen - ...
- *@s: ...
- *
+ *_strlen - a function to count the array of char length
+ *@s: array of characters (string)
  *Return: length
  */
 
@@ -41,7 +42,6 @@ int _strlen(char *s)
 /**
  *_putnum - prints unsigned integer
  *@num: number
- *
  *Return: 0 on success, 1 on failure
  */
 
@@ -89,11 +89,11 @@ int _putnum(unsigned int num)
 }
 
 /**
- *print_stderr - ...
- *@argv: ...
- *@count: ...
- *@av: ...
- *@prompt: ...
+ *print_stderr -  function for printing error messages to the standard error (stderr).
+ *@argv: the name of the command or executable.
+ *@count: error count.
+ *@av: coints the file name
+ *@prompt: cointains the prompt 
  *
  *Return: 127 or -1
  */

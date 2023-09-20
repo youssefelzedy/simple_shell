@@ -1,5 +1,10 @@
 #include "shell.h"
 
+/**
+ * readIn - a function to reads the input string .
+ * Return: the inpute string.
+ */
+
 char *readIn()
 {
 	char *strRead = NULL;
@@ -17,6 +22,12 @@ char *readIn()
 	return (strRead);
 }
 
+/**
+ * checkEmpty - a function to check if the input is empty or not.
+ * @strRead: the input string we read.
+ * Return: 0 if not empty, 1 if empty.
+ */
+
 int checkEmpty(char *strRead)
 {
 	int i;
@@ -30,6 +41,16 @@ int checkEmpty(char *strRead)
 
 	return (1);
 }
+
+/**
+ * exeFile - a function to execute the command we typed.
+ * @cmd: the command we typed.
+ * @av: It's commonly used to pass command-line arguments to the executed command.
+ * @argv: cointans the file name.
+ * @numCount: count the number of errors in the shell command.
+ * Return: -1 if there is an error, executed  if not error.
+ */
+
 
 int exeFile(char *cmd, char **av, char *argv, int numCount)
 {
@@ -73,6 +94,13 @@ int exeFile(char *cmd, char **av, char *argv, int numCount)
 	return (err);
 }
 
+/**
+ * main - a main function.
+ * @argc: size of an args array.
+ * @argv: array of arguments.
+ * Return: stats if success.
+ */
+
 int main(notUsed int argc, char *argv[])
 {
 	char *strRead = NULL, **strRead_cp, *wt = "x_x : ", **simiColon;
@@ -82,7 +110,7 @@ int main(notUsed int argc, char *argv[])
 	while (++numCount)
 	{
 		if (isatty(0))
-		write(STDOUT_FILENO, wt, 6);
+			write(STDOUT_FILENO, wt, 6);
 		strRead = readIn();
 		if (strRead == NULL) /*Exsit Imput or not */
 			exit(0);

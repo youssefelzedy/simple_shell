@@ -1,5 +1,10 @@
 #include "shell.h"
 
+/**
+ * getEnv - a function to print the enviroment.
+ * Return: Nothing.
+ */
+
 void getEnv(void)
 {
 	unsigned int index;

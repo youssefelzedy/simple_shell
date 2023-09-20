@@ -151,7 +151,10 @@ char *_getenv(const char *key)
 
 			value = (char *) malloc(sizeof(char) * (size + 1));
 			if (value == NULL)
+			{
+				free(value);
 				exit(EXIT_FAILURE);
+			}
 			for (; __environ[i][j]; j++)
 				value[k] = __environ[i][j], k++;
 			value[k] = '\0';

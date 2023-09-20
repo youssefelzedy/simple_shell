@@ -5,6 +5,7 @@
  * @strRead_cp: the command we typed.
  * @argv: It's commonly used to pass command-line arguments.
  * @numCount: count the number of errors in the shell command.
+ * @er: the number of errors we did.
  *
  * Return: 0 if success, 2 if error, 127 if not found.
 */

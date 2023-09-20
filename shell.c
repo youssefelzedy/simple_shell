@@ -135,7 +135,6 @@ int main(notUsed int argc, char *argv[])
 				stat = 0;
 				continue;
 			}
-			/* chose the Order to run */
 			stat = choseOrder(strRead_cp, argv, numCount, err);
 			err = stat;
 			free_2d(strRead_cp);

@@ -1,5 +1,14 @@
 #include "shell.h"
 
+/**
+ * modify_exit - exit function.
+ * @argv: the filename
+ * @count:count number of error
+ * @av:the path name
+ * @err: the error message
+ * Return: 1 if its true , 0 if false.
+ */
+
 int modify_exit(char **av, char *argv, int err, int count)
 {
 	if (count == 0)
@@ -22,7 +31,11 @@ int modify_exit(char **av, char *argv, int err, int count)
 	free_2d(av);
 	exit(err);
 }
-
+/**
+ * _stoi - function to check if the array are NAN.
+ * @s: the string we want ( array of chars).
+ * Return: 1 if its true , 0 if false.
+ */
 int _nan(char *s)
 {
 	int i;
@@ -32,6 +45,11 @@ int _nan(char *s)
 			return (1);
 	return (0);
 }
+/**
+ * _stoi - function to convert string to integer.
+ * @s: the string we want to convert ( array of chars) .
+ * Return: the integer which was converted.
+ */
 
 int _stoi(char *s)
 {

@@ -35,7 +35,7 @@ int _strlen(char *s)
 	int i;
 
 	for (i = 0; s[i]; i++)
-	;
+		;
 	return (i);
 }
 
@@ -63,7 +63,7 @@ int _putnum(unsigned int num)
 		num_cp /= 10;
 	}
 
-	num_str = (char *) malloc(sizeof(char) * size);
+	num_str = (char *)malloc(sizeof(char) * size);
 	if (num_str == NULL)
 	{
 		return (1);
@@ -93,7 +93,7 @@ int _putnum(unsigned int num)
  *@argv: the name of the command or executable.
  *@count: error count.
  *@av: coints the file name
- *@prompt: cointains the prompt 
+ *@prompt: cointains the prompt
  *
  *Return: 127 or -1
  */
@@ -111,4 +111,3 @@ int print_stderr(char *argv, unsigned int count, char *av, char *prompt)
 
 	return (127);
 }
-

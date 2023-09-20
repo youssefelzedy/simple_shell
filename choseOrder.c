@@ -8,8 +8,6 @@ unsigned int numCount)
 
 	if (_strcmp(strRead_cp[0], "exit") == 0)
 	{
-		free_2d(strRead_cp);
-		free_2d(argv);
 		if (modify_exit(strRead_cp, argv[0], error, numCount) == 2
 			&& !isatty(0))
 			exit(2);

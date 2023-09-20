@@ -6,8 +6,7 @@ void getEnv(void)
 
 	for (index = 0; __environ[index] != NULL; index++)
 	{
-		_putstr(__environ[index]);
-		_putchar('\n');
+		printf("%s\n", __environ[index]);
 	}
 }
 

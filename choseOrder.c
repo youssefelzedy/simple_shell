@@ -40,8 +40,7 @@ int choseOrder(char **strRead_cp, char **argv,
 	else
 	{
 		stat = exeFile(strRead_cp[0], strRead_cp, argv[0], numCount);
-		error = errno;
-		/*printf("error: %d - stat: %d\n", error, stat); */
+		error = errno = stat;
 		if (stat == -1)
 			freeExit(strRead_cp, 1);
 		else if (stat == 127 && !isatty(0))

@@ -59,7 +59,8 @@ int exeFile(char *cmd, char **av, char *argv, int numCount)
 
 	if (execute == 1)
 	{
-		if (createChild(cmd, av) == -1)
+		err = createChild(cmd, av);
+		if (err == -1)
 		{
 			return (-1);
 		}
@@ -69,11 +70,11 @@ int exeFile(char *cmd, char **av, char *argv, int numCount)
 		path_dir = get_dirs(path);
 		/*returns the executable PATH, NULL otherwise */
 		path_found = check_path(cmd, path_dir);
-
 		if (path_found != NULL)
 		{
 			isPATH = 1; /*there is an executable in PATH */
-			if (createChild(path_found, av) == -1)
+			err = createChild(path_found, av);
+			if (err == -1)
 				return (-1);
 		}
 	}
@@ -90,7 +91,6 @@ int exeFile(char *cmd, char **av, char *argv, int numCount)
 		free(path_found);
 	if (path_dir)
 		free_2d(path_dir);
-
 	return (err);
 }
 
@@ -113,7 +113,7 @@ int main(notUsed int argc, char *argv[])
 			write(STDOUT_FILENO, wt, 6);
 		strRead = readIn();
 		if (strRead == NULL) /*Exsit Imput or not */
-			exit(0);
+			exit(err);
 		if (checkEmpty(strRead))
 		{
 			free(strRead);
@@ -133,14 +133,14 @@ int main(notUsed int argc, char *argv[])
 			}
 			if (strRead_cp[0] == NULL)
 			{
-				stat = 0;
-				free_2d(strRead_cp);
+				stat = 0, free_2d(strRead_cp);
 				continue;
 			}
-			stat = choseOrder(strRead_cp, argv, numCount, err, simiColon), err = stat;
+			stat = choseOrder(strRead_cp, argv, numCount, err, simiColon);
+			err = errno = stat;
 			free_2d(strRead_cp);
 		}
 		free_2d(simiColon);
 	}
-	return (stat);
+	return (err);
 }
